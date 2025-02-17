@@ -28,7 +28,7 @@ function boxclick(){
     if(choice[index]!="" || !gameover){
         return
     }
-    start()
+    
     changebox(this,index)
     winner()
 }
@@ -104,6 +104,7 @@ function restart(){
     Popup.style.display="none"
 
 }
+start()
 {/* <img src="x-won.png" alt="">
 <img src="o-won.png" alt="">
 <img src="x-o-matchdraw.png" alt=""> */}
