@@ -12,7 +12,7 @@ let currentPlayer=x
 let player="X"
 let choice=["","","","","","","","",""]
 let gameover=false
-start()
+
 function start(){
     // here add the EventListener for all the 9 box
     Box.forEach(box=>box.addEventListener('click',boxclick))
@@ -28,6 +28,7 @@ function boxclick(){
     if(choice[index]!="" || !gameover){
         return
     }
+    start()
     changebox(this,index)
     winner()
 }
