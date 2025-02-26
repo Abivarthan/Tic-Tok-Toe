@@ -2,6 +2,7 @@ const Box=document.querySelectorAll(".box")
 const Status=document.querySelector(".status")
 const Restartbtn=document.getElementById("restart")
 const Popup=document.querySelector(".popup")
+const Hide=document.getElementById("hide")
 let x="<img src='./x.png' width='100px' height='100px'>"
 let o="<img src='./o.png' width='100px' height='100px'>"
 let xwin="<img src='./x-won.png'> "
@@ -12,11 +13,12 @@ let currentPlayer=x
 let player="X"
 let choice=["","","","","","","","",""]
 let gameover=false
-
+start()
 function start(){
     // here add the EventListener for all the 9 box
     Box.forEach(box=>box.addEventListener('click',boxclick))
     Restartbtn.addEventListener("click",restart)
+    Restartbtn.textContent="Start"
     Status.textContent=`${player}'s Turn`
     gameover=true
 } 
@@ -28,7 +30,6 @@ function boxclick(){
     if(choice[index]!="" || !gameover){
         return
     }
-    
     changebox(this,index)
     winner()
 }
@@ -75,7 +76,8 @@ function winner(){
             Popup.innerHTML=owin
         }
         Popup.style.display = "flex"
-
+        Hide.style.opacity=0.1
+        Restartbtn.textContent="ReStart"
     }
    
     else if(!choice.includes("")){
@@ -83,7 +85,8 @@ function winner(){
         gameover=false
         Popup.innerHTML=matchdraw
         Popup.style.display = "flex"
-
+        Hide.style.opacity=0.1
+        Restartbtn.textContent="ReStart"
     }
     else{
         changeplayer()
@@ -102,9 +105,8 @@ function restart(){
     Status.textContent=`Play Now`
     gameover=true
     Popup.style.display="none"
-
+    Hide.style.opacity=1
 }
-start()
-{/* <img src="x-won.png" alt="">
+/* <img src="x-won.png" alt="">
 <img src="o-won.png" alt="">
-<img src="x-o-matchdraw.png" alt=""> */}
+<img src="x-o-matchdraw.png" alt=""> */
